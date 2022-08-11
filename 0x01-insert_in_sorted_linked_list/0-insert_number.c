@@ -28,6 +28,10 @@ listint_t *insert_node(listint_t **head, int number)
 	/* go through list and insert at correct position */
 	while ((current->n <= number) && current != NULL)
 	{
+		if ((current->n <= number) && (current->next == NULL))
+		{
+			return add_nodeint_end(head, number);
+		}
 		previous = current;
 		current = current->next;
 	}
