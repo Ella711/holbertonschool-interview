@@ -19,19 +19,17 @@ listint_t *insert_node(listint_t **head, int number)
 	new_node->next = NULL;
 
 	/* checks if insertion is at beginning */
-	if (head == NULL || *head == NULL)
+	if (!head || !*head)
 	{
 		*head = new_node;
 		return (*head);
 	}
 	
 	/* go through list and insert at correct position */
-	while ((current->n <= number) && current != NULL)
+	while (current != NULL)
 	{
-		if ((current->n <= number) && (current->next == NULL))
-		{
-			return add_nodeint_end(head, number);
-		}
+		if (current->n >= number)
+			break;
 		previous = current;
 		current = current->next;
 	}
@@ -39,6 +37,11 @@ listint_t *insert_node(listint_t **head, int number)
 	{
 		previous->next = new_node;
 		new_node->next = current;
+	}
+	if (previous->n > number)
+	{
+		*head = new_node;
+		new_node->next = previous;
 	}
 	return (*head);
 }
