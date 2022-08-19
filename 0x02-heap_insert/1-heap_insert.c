@@ -1,8 +1,7 @@
 #include "binary_trees.h"
 /**
  * len_heap - counts nodes in heap
- * 
- * @root: pointer to root 
+ * @root: pointer to root
  * Return: int with number of nodes in heap
  */
 int len_heap(heap_t *root)
@@ -13,7 +12,7 @@ int len_heap(heap_t *root)
 		return (0);
 	if (root)
 		count = 1;
-	
+
 	count += len_heap(root->left);
 	count += len_heap(root->right);
 
@@ -21,7 +20,6 @@ int len_heap(heap_t *root)
 }
 /**
  * check_perfection - checks if binary tree is perfect
- * 
  * @tree: pointer to binary tree
  * Return: 1 if perfect, 0 if not
  */
@@ -31,16 +29,15 @@ int check_perfection(const heap_t *tree)
 
 	if (!tree)
 		return (0);
-	
+
 	left = len_heap(tree->left);
 	right = len_heap(tree->right);
 	if (left == right)
 		return (1);
-	return(0);
+	return (0);
 }
 /**
  * find_parent - finds the parent node
- * 
  * @root: pointer to root of binary tree
  * Return: pointer to parent node
  */
@@ -51,7 +48,7 @@ heap_t *find_parent(heap_t *root)
 
 	if (!root)
 		return (NULL);
-	
+
 	parent = root;
 	left_count = len_heap(parent->left);
 	right_count = len_heap(parent->right);
@@ -63,14 +60,14 @@ heap_t *find_parent(heap_t *root)
 		return (parent);
 	if (!left_check || (left_check && right_check && left_count == right_count))
 		return (find_parent(parent->left));
-	else if (!right_check || (left_check && right_check && left_count > right_count))
+	else if (!right_check || (left_check && right_check
+				&& left_count > right_count))
 		return (find_parent(parent->right));
 	return (parent);
 
 }
 /**
  * sort_nodes - sorts the node values between parent and child
- * 
  * @new_node: double pointer to the new node
  */
 void sort_nodes(heap_t **new_node)
