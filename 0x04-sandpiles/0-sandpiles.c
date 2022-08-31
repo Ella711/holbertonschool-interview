@@ -1,5 +1,4 @@
 #include "sandpiles.h"
-
 /**
  * print_grid - Print 3x3 grid
  * @grid: 3x3 grid
@@ -19,7 +18,6 @@ static void print_grid(int grid[3][3])
 		printf("\n");
 	}
 }
-
 /**
  * stable - functions that checks if the sand pile is stable
  * @grid1: 3x3 grid
@@ -42,7 +40,6 @@ int stable(int grid1[3][3])
 	}
 	return (stable);
 }
-
 /**
  * sum - function that adds two 3x3 grids
  * @grid1: 3x3 grid
@@ -58,7 +55,6 @@ void sum(int grid1[3][3], int grid2[3][3])
 			grid1[i][j] = grid1[i][j] + grid2[i][j];
 	}
 }
-
 /**
  * topple - function that topples the sand pile
  * @grid1: 3x3 grid
@@ -66,12 +62,10 @@ void sum(int grid1[3][3], int grid2[3][3])
 void topple(int grid1[3][3])
 {
 	int i, j;
-
 	int temp[3][3] = {
 	    {0, 0, 0},
 	    {0, 0, 0},
 	    {0, 0, 0}};
-
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
@@ -92,7 +86,6 @@ void topple(int grid1[3][3])
 	}
 	sum(grid1, temp);
 }
-
 /**
  * sandpiles_sum - function that computes the sum of two sandpiles
  * @grid1: a 3x3 grid
@@ -101,7 +94,6 @@ void topple(int grid1[3][3])
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 	sum(grid1, grid2);
-
 	while (!stable(grid1))
 	{
 		printf("=\n");
