@@ -29,14 +29,13 @@ def count_words(subreddit, word_list, after=None, count={}):
             count[word] = 0
     children = data.get("children")
     for child in children:
-        hot_title = (child.get("data").get("title").lower())
-        hot_title = hot_title.split(' ')
+        hot_title = (child.get("data").get("title").lower()).split(' ')
         for word in word_list:
             word = word.lower()
             count[word] += hot_title.count(word)
     after = data.get("after")
     if after is None:
-        sorted_subs = sorted(count.items(), key=lambda x: x[0])
+        sorted_subs = sorted(count.items(), key=lambda x: (-x[1], x[0]))
         for subs in sorted_subs:
             if subs[1] != 0:
                 print(subs[0] + ": " + str(subs[1]))
