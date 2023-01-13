@@ -79,5 +79,5 @@ int main(int argc, char *argv[])
 		printf("%d", total[i]);
 	printf("\n");
 	free(total);
-    return (0);
+	return (0);
 }
