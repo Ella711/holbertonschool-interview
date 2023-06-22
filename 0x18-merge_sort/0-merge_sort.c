@@ -1,6 +1,7 @@
 #include "sort.h"
 /**
- * merge_sort - function that sorts an array of integers in ascending order using the Merge Sort algorithm
+ * merge_sort - function that sorts an array of integers in ascending order
+		using the Merge Sort algorithm
  * @array: array of numbers to be sorted
  * @size: size of the array
 */
@@ -66,7 +67,7 @@ void merge(int left[], int right[], size_t size)
 	}
 	for (i = 0; i < size; i++)
 		left[i] = right[i];
-	
+
 	printf("[Done]: ");
 	print_array(right, size);
 }
